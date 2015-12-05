@@ -22,7 +22,7 @@
 	</target>
 
 	<target name="compile" depends="init" description="compile the source ">
-	  <!--  <echo>Starting checkstyle</echo>
+	  <!--  <echo>Starting the checkstyle</echo>
         <checkstyle config="rules/sun_checks.xml" failOnViolation="false">
             <fileset dir="src" includes="**/*.java"/>
             <formatter type="plain"/>
