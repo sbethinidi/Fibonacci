@@ -22,6 +22,13 @@
 	</target>
 
 	<target name="compile" depends="init" description="compile the source ">
+	    <echo>Starting checkstyle</echo>
+        <checkstyle config="rules/sun_checks.xml" failOnViolation="false">
+            <fileset dir="src" includes="**/*.java"/>
+            <formatter type="plain"/>
+            <formatter type="xml" toFile="build/checkstyle_errors.xml"/>
+        </checkstyle>
+        <echo>Checkstyle finished</echo>
 		<!-- Compile the java code from ${src.dir} into ${build.dir} -->
 		<javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}" > 
 			<exclude name="test/**.java" /> 
