@@ -11,6 +11,7 @@
     <property name="checkstyle.home.dir" value="C:/Program Files/checkstyle-master" />
     <property name="cobertura.home.dir" value="C:\Program Files (x86)\cobertura-2.1.1" />
     <property name="findbugs.home.dir" value="C:\Program Files\findbugs-3.0.1" />
+	<property name="projectName" value="FibonacciUI" />
     <property name="lib.dir" location="${basedir}/lib" />
     <property name="src.dir" location="${basedir}/src" />
     <property name="bin.dir" location="${basedir}/bin" />
@@ -112,13 +113,20 @@
   </java>
 </target>
 
+    <target name="init">
+		<!-- Create the time stamp -->
+		<tstamp />
+		<!-- Create the build directory structure used by compile -->
+		
+	</target>
+
 <target name="jar" depends="compile" description="package, output to JAR">
 
 		<!-- Create the distribution directory -->
 		<mkdir dir="${jar.dir}" />
 
 		<!-- Put everything in ${build} into the {$projectName}-${DSTAMP}.jar file -->
-		<jar jarfile="${jar.dir}/${projectName}-${DSTAMP}.jar" basedir="${build.dir}" >
+		<jar jarfile="${jar.dir}/${projectName}-${DSTAMP}.jar"  >
 		    <manifest>
 			<!-- create an executable Jar -->
 			<attribute name="Main-Class" value="FibonacciUI" />
@@ -262,7 +270,8 @@
     <!-- -->
     <target name="run"
             description="Run the build"
-            depends="clean, 
+            depends="clean,
+				init,
                 prepare.report.dir,   
                 compile,
                 cobertura.instrument, 
