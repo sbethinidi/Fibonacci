@@ -233,7 +233,8 @@
     <!-- -->
     <target name="report.checkstyle" 
         description="Generate a report of code convention violations.">
-        <taskdef resource="checkstyletask.properties"
+	<!--	<taskdef resource="com/puppycrawl/tools/checkstyle/ant/checkstyle-ant-task.properties" classpathref="checkstyle.lib.path"/> -->
+        <taskdef resource="com/puppycrawl/tools/checkstyle/ant/checkstyle-ant-task.properties"
                  classpath="${checkstyle.home.dir}/checkstyle-6.13-all.jar"
         />
 
@@ -257,7 +258,7 @@
 
         <style in="${report.checkstyle.dir}/checkstyle_report.xml"
                out="${report.checkstyle.dir}/checkstyle_report.html"
-               style="${checkstyle.home.dir}/contrib/checkstyle-noframes.xsl"
+               style="${checkstyle.home.dir}/checkstyle-noframes.xsl"
         />
     </target>
 
@@ -272,7 +273,8 @@
             description="Run the build"
             depends="clean,
 				init,
-                prepare.report.dir,   
+                prepare.report.dir,
+                report.checkstyle,				
                 compile,
                 cobertura.instrument, 
                 junit, 
