@@ -219,7 +219,15 @@
     <target name="report.cobertura"
             description="Generate an HTML report on Cobertura."
     >
-        <cobertura-report format="html"
+        <cobertura-report format="xml"
+                          datafile="${cobertura.ser.file}"
+                          destdir="${report.cobertura.dir}"
+        >
+            <fileset dir="${src.dir}">
+                <include name="**/*.java" />
+            </fileset>
+        </cobertura-report>
+		<cobertura-report format="html"
                           datafile="${cobertura.ser.file}"
                           destdir="${report.cobertura.dir}"
         >
@@ -273,8 +281,7 @@
             description="Run the build"
             depends="clean,
 				init,
-                prepare.report.dir,
-                report.checkstyle,				
+                prepare.report.dir,   
                 compile,
                 cobertura.instrument, 
                 junit, 
