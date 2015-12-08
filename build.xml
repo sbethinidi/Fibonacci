@@ -20,6 +20,7 @@
     <property name="report.dir" location="${basedir}/report" />
 
     <property name="report.checkstyle.dir" location="${report.dir}/checkstyle" />
+	<property name="src.test.dir" location="${src.dir}/test" />
     <property name="report.junit.dir" location="${report.dir}/junit" />
     <property name="report.findbugs.dir" location="${report.dir}/findbugs" />
     <property name="report.cobertura.dir" location="${report.dir}/cobertura" />
@@ -186,7 +187,7 @@
             <formatter type="xml" />
 
             <batchtest todir="${report.temp.dir}">
-                <fileset dir="${src.dir}">
+                <fileset dir="${src.test.dir}">
                     <include name="**/*Test*.java" />
                 </fileset>
             </batchtest>
@@ -223,7 +224,7 @@
                           datafile="${cobertura.ser.file}"
                           destdir="${report.cobertura.dir}"
         >
-            <fileset dir="${src.dir}">
+            <fileset dir="${src.test.dir}">
                 <include name="**/*.java" />
             </fileset>
         </cobertura-report>
@@ -231,7 +232,7 @@
                           datafile="${cobertura.ser.file}"
                           destdir="${report.cobertura.dir}"
         >
-            <fileset dir="${src.dir}">
+            <fileset dir="${src.test.dir}">
                 <include name="**/*.java" />
             </fileset>
         </cobertura-report>
