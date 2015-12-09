@@ -52,6 +52,7 @@
         <delete dir="${report.temp.dir}" />
         <delete dir="${bin.dir}" />
 		<delete dir="${jar.dir}" />
+		<delete dir="${instrumented.dir}" />
     </target>
 
     <target name="prepare.report.dir" description="Prepares the reports folder">
@@ -152,7 +153,8 @@
             <ignore regex="org.apache.log4j.*" />
             <fileset dir="${bin.dir}">
                 <include name="**/*.class" />
-                <!-- <exclude name="**/*Test.class" /> -->
+                <exclude name="Test*.class" /> 
+				<exclude name="FibonacciUI.class" /> 
             </fileset>
         </cobertura-instrument>
     </target>
@@ -175,7 +177,7 @@
             <!-- Note the classpath order: instrumented classes are before 
                  the original (uninstrumented) classes.  This is important. -->
             <classpath location="${instrumented.dir}" />
-            <classpath location="${bin.dir}" />
+             <!-- <classpath location="${bin.dir}" /> -->
             <classpath location="${basedir}/junit-4.12.jar}" />
 
             <!-- The instrumented classes reference classes used by the
