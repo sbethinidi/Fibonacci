@@ -2,11 +2,9 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class TestFibonacci
-{
+public class TestFibonacci {
 	@Test
-	public void test()
-	{
+	public void test() {
 		assertEquals(0, Fibonacci.calculate(0));
 		assertEquals(1, Fibonacci.calculate(1));
 		assertEquals(1, Fibonacci.calculate(2));
@@ -15,7 +13,7 @@ public class TestFibonacci
 		assertEquals(5, Fibonacci.calculate(5));
 		assertEquals(8, Fibonacci.calculate(6));
 		assertEquals(13, Fibonacci.calculate(7));
-		
+
 		assertEquals(1134903170, Fibonacci.calculate(45));
 	}
 }
